@@ -46,8 +46,8 @@ prevIntegY=0
 prevErrorX=0
 prevErrorY=0
 delivery_time=0
-doksanX=7.61111 #siyah top 7.5
-doksanY=7.4 #siyah top 7.5
+doksanX=7.61111 
+doksanY=7.4 
 pre_servo_out1 = 0
 pre_servo_out2 = 0
 
@@ -61,7 +61,7 @@ def PIDcontrol(ballPosX, ballPosY, prevBallPosX, prevBallPosY, refX, refY, Kp_PI
     global prevDerivX, prevDerivY, prevIntegX, prevIntegY
     global prevErrorX, prevErrorY
     global LCD_X,LCD_Y
-    rad=ctrlPnl.getSize() # siyah top 3 #tenis topu 6
+    rad=ctrlPnl.getSize() 
     print("rad:", str(rad))
     Ts = time.time() - delivery_time    #sampling time
     delivery_time = time.time()
@@ -70,7 +70,7 @@ def PIDcontrol(ballPosX, ballPosY, prevBallPosX, prevBallPosY, refX, refY, Kp_PI
     errorY = refY - ballPosY
 
     
-    if (abs(ballPosX) <= rad and abs(ballPosY) <= rad): # buyuk top 6 #kucuk top 4
+    if (abs(ballPosX) <= rad and abs(ballPosY) <= rad): 
         flagM=1
         Kp=Kp_PID
         Ki=Ki_PID
@@ -78,9 +78,9 @@ def PIDcontrol(ballPosX, ballPosY, prevBallPosX, prevBallPosY, refX, refY, Kp_PI
 
     else:
 
-        Kp=Lp #3 # siyah 3 #beyaz top 3 # tenis topu 2
-        Ki=Li #0   # siyah top 0.01 3 beyaz top 0.01 3 tenis ki 0.2
-        Kd=Ld #2.5  # siyah top 2.5 # beyaz top 2.5 # tenis topu 2.5
+        Kp=Lp 
+        Ki=Li 
+        Kd=Ld 
 
 
     try:
@@ -167,22 +167,6 @@ def writeToLCD (x,y,IsBallDetected):
     return
 
 
-def grab_contours(cnts):
-    
-    if len(cnts) == 2:
-        cnts = cnts[0]
-
-    elif len(cnts) == 3:
-        cnts = cnts[1]
-        
-    else:
-        raise Exception(("Contours tuple must have length 2 or 3, "
-            "otherwise OpenCV changed their cv2.findContours return "
-            "signature yet again. Refer to OpenCV's documentation "
-            "in that case"))
-
-    return cnts
-
 def nothing (x):
     pass
 
@@ -203,7 +187,6 @@ def main():
     global PreX ,PreY, ScaleX, ScaleY
 
     ret, frame = cap.read()
-    #frame = frame[20:440, 135:555]
     frame = imutils.resize(frame[20:440, 135:555], width = 300)
     blurred = cv2.GaussianBlur(frame, (11,11), 0)
     hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
