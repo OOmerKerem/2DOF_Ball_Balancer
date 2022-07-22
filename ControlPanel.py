@@ -107,7 +107,7 @@ class ControlPanel:
             self._setProfileInnerPID()
             self._setProfileOuterPID()
             self._setProfileSize()
-
+    #
     # def _setInnerPID(self, P, I, D):
     #     self._clearInnerPID()
     #     self._InnerPID[0].insert(0, P)
