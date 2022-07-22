@@ -51,7 +51,7 @@ doksanY=7.4
 pre_servo_out1 = 0
 pre_servo_out2 = 0
 
-###
+#
 def PIDcontrol(ballPosX, ballPosY, prevBallPosX, prevBallPosY, refX, refY, Kp_PID, Ki_PID, Kd_PID, Lp, Li, Ld):     # PID controller
     global totalErrorX, totalErrorY
     global alpha, beta, prevAlpha, prevBeta
